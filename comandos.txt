@@ -1,0 +1,1 @@
+cv2.findCounttours(umbral,mode,method)
