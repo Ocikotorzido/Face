@@ -15,11 +15,17 @@ _,umbral=cv2.threshold(gris,100,255,cv2.THRESH_BINARY)
 # contorno y jerarquia, marcado de contorno y funcion de findContours
 contorno,jerarquia = cv2.findContours(umbral,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
 
+# jerarquias
+#  -1 = a todos los contornos
+# 1 al 3 los siguientes de forma individual
+
+# dibujo de contorno y umbral de colores, jerarquia, color y grosor
+cv2.drawContours (imagen,contorno, -1, (0,255,0), 3)
 
 # el codigo a continuacion muestra la imagen
 cv2.imshow('imagen',umbral)
 cv2.imshow('imagen2',gris)
-
+cv2.imshow('imagen2',imagen)
 #esto evita que se cierre de inmediato
 cv2.waitKey(0)
 cv2.destroyAllWindows()
