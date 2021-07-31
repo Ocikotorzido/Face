@@ -12,6 +12,10 @@ gris=cv2.cvtColor(imagen,cv2.COLOR_BGR2GRAY)
 # el otro valor nos devuelve el valor del umbral
 _,umbral=cv2.threshold(gris,100,255,cv2.THRESH_BINARY)
 
+# contorno y jerarquia, marcado de contorno y funcion de findContours
+contorno,jerarquia = cv2.findContours(umbral,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
+
+
 # el codigo a continuacion muestra la imagen
 cv2.imshow('imagen',umbral)
 cv2.imshow('imagen2',gris)
