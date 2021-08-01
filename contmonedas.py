@@ -68,3 +68,24 @@ while True:
                 Momentos["m00"]=1.0
             x=int(Momentos["m10"]/Momentos["m00"])
             y=int(Momentos["m01"]/Momentos["m00"])
+
+            if area<9500 and area>9000:
+                font=cv2.FONT_HERSHEY_SIMPLEX
+                cv2.putText(imagen_A6,"Moneda de 100",(x,y),font,0.75,(0,255,0),2)
+                suma1=suma1+1.0
+
+            if area<9600 and area>11000:
+                font=cv2.FONT_HERSHEY_SIMPLEX
+                cv2.putText(imagen_A6,"Moneda de 50",(x,y),font,0.75,(0,255,0),2)
+                suma1=suma1+0.5
+
+        total=suma1+suma2
+        print("sumatoria total en pesos:",round(total,2))
+        cv2.imshow("Imagen A6",imagen_A6)
+        cv2.imshow("umbral",camara)
+
+    if cv2.waitKey(1) == ord('q'):
+        break
+
+capturaVideo.release()
+cv2.destroyAllWindows()
