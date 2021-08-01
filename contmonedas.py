@@ -23,7 +23,7 @@ def alineamiento(imagen,ancho,alto):
     cv2.imshow("Umbral",umbral)
 
     # esto requiere la imagen umbralizada (findcontours) esto devuelve los puntos desordenados
-    contorno,jerarquia = cv2.findContours(umbral,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)[0]
+    contorno = cv2.findContours(umbral,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)[0]
 
     # ordenamos los contornos -- reverse True ordena de menor a mayor
     contorno=sorted(contorno,key=cv2.contourArea,reverse=True)[:1]
@@ -42,7 +42,7 @@ def alineamiento(imagen,ancho,alto):
 
     return imagen_alineada
 
-capturaVideo=cv2.VideoCapture(0)
+capturaVideo=cv2.VideoCapture(1)
 
 while True:
     tipocamara,camara=capturaVideo.read()
@@ -55,7 +55,7 @@ while True:
         blur=cv2.GaussianBlur(gris,(5,5),1)
         _,umbral2=cv2.threshold(blur,0,255,cv2.THRESH_OTSU+cv2.THRESH_BINARY_INV)
         cv2.imshow("umbral",umbral2)
-        contorno2,jerarquia2=cv2.findContours(umbral2,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)[0]
+        contorno2=cv2.findContours(umbral2,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)[0]
 
         cv2.drawContours(imagen_A6,contorno2,-1,(255,0,0),2)
         suma1=0.0
@@ -82,7 +82,7 @@ while True:
         total=suma1+suma2
         print("sumatoria total en pesos:",round(total,2))
         cv2.imshow("Imagen A6",imagen_A6)
-        cv2.imshow("umbral",camara)
+        cv2.imshow("camara",camara)
 
     if cv2.waitKey(1) == ord('q'):
         break
