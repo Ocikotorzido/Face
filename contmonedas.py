@@ -42,6 +42,7 @@ def alineamiento(imagen,ancho,alto):
 
     return imagen_alineada
 
+# esto captura el vido o la camara si es 0 es la camara integrada y 1 camaras externas
 capturaVideo=cv2.VideoCapture(1)
 
 while True:
