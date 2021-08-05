@@ -1,11 +1,11 @@
 import cv2 as cv
 import os
 import imutils
-dataRuta='E:/Proyectos Python/curso/reconocimientofacial1/Data'
+dataRuta=r'C:\Users\nanel\OneDrive\Escritorio\RF\monedascontorno\reconocimientofacial1\Data'
 listaData=os.listdir(dataRuta)
 entrenamientoEigenFaceRecognizer=cv.face.EigenFaceRecognizer_create()
 entrenamientoEigenFaceRecognizer.read('EntrenamientoEigenFaceRecognizer.xml')
-ruidos=cv.CascadeClassifier('E:\Proyectos Python\curso\entrenamientos opencv ruidos\opencv-master\data\haarcascades\haarcascade_frontalface_default.xml')
+ruidos=cv.CascadeClassifier(r'C:\Users\nanel\OneDrive\Escritorio\RF\monedascontorno\reconocimientofacial1\haarcascade_frontalface_default.xml')
 camara=cv.VideoCapture('desco.mp4')
 while True:
     respuesta,captura=camara.read()
